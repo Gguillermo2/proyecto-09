@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+        <script>
+        //se crea una classe llamada persona 
+            class Persona {
+//#documento y #nombreCompleto son propiedades privadas de la clase Persona. Esto significa que solo se pueden acceder desde dentro de la clase. Estas propiedades se utilizan para almacenar el número de documento y el nombre completo de una persona
+                #documento;
+                #nombreCompleto;
+//El constructor de la clase Persona se encarga de inicializar #documento y #nombreCompleto con valores iniciales vacíos
+                constructor() {
+                this.#documento = '';
+                this.#nombreCompleto = '';
+            }   
+//set setDocumento(value) y get getDocumento() son métodos de acceso que permiten establecer y obtener el valor de la propiedad #documento, respectivamente. El método setDocumento permite asignar un valor a #documento, mientras que el método getDocumento permite recuperar el valor de #documento
+                set setDocumento(value) {
+                    this.#documento = value;
+                }
+            
+            get getDocumento() {
+                return this.#documento
+            }
+//set setNombreCompleto(value) y get getNombreCompleto() son métodos de acceso similares para la propiedad #nombreCompleto.
+            set setNombreCompleto(value) {
+                this.#nombreCompleto = value;
+            }
+
+            get getNombreCompleto() {
+                return this.#nombreCompleto
+            }
+//El método informacion() imprime en la consola un mensaje que incluye el nombre completo y el número de documento de la persona
+            informacion() {
+                console.log('Hola mi nombre es ' + this.getNombreCompleto + ' y mi numero de documento es ' + this.getDocumento)
+            }
+        }
+//class Aprendiz (que extiende la clase Persona):
+        class Aprendiz extends Persona {
+//#ficha y #programa son propiedades privadas de la clase Aprendiz. Estas propiedades se utilizan para almacenar información adicional relacionada con el aprendiz, como su ficha y programa
+            #ficha
+            #programa
+//El constructor de la clase Aprendiz llama al constructor de la clase Persona usando super(), lo que inicializa las propiedades heredadas de #documento y #nombreCompleto y luego inicializa las propiedades propias #ficha y #programa con valores vacíos
+            constructor() {
+                super();
+                this.#ficha = '';
+                this.#programa = '';
+            }
+//son métodos de acceso que permiten establecer y obtener el valor de la propiedad #ficha, respectivamente. El método setFicha permite asignar un valor a #ficha, mientras que el método getFicha permite recuperar el valor de #ficha
+            set setFicha(value) {
+                this.#ficha = value;
+            }
+
+            get getFicha() {
+                return this.#ficha
+            }
+//set setPrograma(value) y get getPrograma() son métodos de acceso similares para la propiedad #programa.
+            set setPrograma(value) {
+                this.#programa = value;
+            }
+
+            get getPrograma() {
+                return this.#programa
+            }
+//El método matricula() imprime en la consola un mensaje que incluye la ficha y el programa del aprendiz
+            matricula() {
+                console.log('Pesrtenesco al la ficha ' + this.getFicha + ' del programa ' + this.getPrograma)
+            }
+        }
+//class Instructor (que extiende la clase Persona) #profesion y #salarioBasico son propiedades privadas de la clase Instructor. Estas propiedades se utilizan para almacenar la profesión y el salario base del instructor
+        class Instructor extends Persona {
+            #profecion;
+            #salarioBasico;
+//El constructor de la clase Instructor llama al constructor de la clase Persona usando super(), lo que inicializa las propiedades heredadas de #documento y #nombreCompleto y luego inicializa las propiedades propias #profesion y #salarioBasico con valores vacíos para la profesión y 0 para el salario base
+            constructor() {
+                super();
+                this.#profecion = '';
+                this.#salarioBasico = 0;
+            }
+
+            set setProfecion(value) {
+                this.#profecion = value;
+            }
+
+            get getProfecion() {
+                return this.#profecion
+            }
+
+            set setSalarioBase(value) {
+                this.#salarioBasico = value;
+            }
+
+            get getSalarioBase() {
+                return this.#salarioBasico
+            }
+
+            contrato() {
+                console.log('Mi profecion es ' + this.getProfecion + ' con un salario basico de $' + this.getSalarioBase)
+            }
+        }
+//lass EtapaLectiva (que extiende la clase Aprendiz) #numeroTrimestre, #fechaInicio, y #fechaTerminacion son propiedades privadas de la clase EtapaLectiva. Estas propiedades se utilizan para almacenar información relacionada con la etapa lectiva, como el número de trimestre, la fecha de inicio y la fecha de terminación
+        class EtapaLectiva extends Aprendiz {
+            #numeroTrimestre;
+            #fechaInicio;
+            #fechaTerminacion;
+//El constructor de la clase EtapaLectiva llama al constructor de la clase Aprendiz usando super(), lo que inicializa las propiedades heredadas de #documento
+            constructor() {
+                super();
+                this.#numeroTrimestre = 0;
+                this.#fechaInicio = '';
+                this.#fechaTerminacion = '';
+            }
+
+            set setNumeroTrimestre(value) {
+                this.#numeroTrimestre = value;
+            }
+
+            get getNumeroTrimestre() {
+                return this.#numeroTrimestre
+            }
+
+            set setFechaInicio(value) {
+                this.#fechaInicio = value;
+            }
+
+            get getFechaInicio() {
+                return this.#fechaInicio
+            }
+
+            set setFechaTerminacion(value) {
+                this.#fechaTerminacion = value;
+            }
+
+            get getFechaTerminacion() {
+                return this.#fechaTerminacion
+            }
+//El método informacionEtapaLectiva() imprime en la consola información sobre la etapa lectiva, incluyendo las fechas de inicio y terminación
+            informacionEtapaLectiva() {
+                console.log(' inicie el ' + this.getFechaInicio + ' y termino etapa lectiva el ' + this.getFechaTerminacion)
+            }
+//El método estado() imprime en la consola el número de trimestre actual
+            estado() {
+                console.log('actualmente estoy en el trimestre ' + this.getNumeroTrimestre)
+            }
+        }
+//Se crea una instancia de la clase EtapaLectiva llamada aprendiz1 al final del código. Esta instancia representa a un estudiante durante su etapa lectiva y tiene acceso a todas las propiedades y métodos definidos en la clase EtapaLectiva, así como a las propiedades y métodos heredados de las clases Aprendiz y Persona.
+        const aprendiz1 = new EtapaLectiva
+
+        aprendiz1.setPrograma='ADSO';
+        aprendiz1.setDocumento='1069645810' ;
+        aprendiz1.setFechaInicio='11/06/2023';
+        aprendiz1.setFechaTerminacion='11/06/2025';
+        aprendiz1.setFicha='2798618';
+        aprendiz1.setNombreCompleto='guillermo andres avila ';
+        aprendiz1.setNumeroTrimestre=2;
+        
+        aprendiz1.informacion();
+        aprendiz1.informacionEtapaLectiva();
+        aprendiz1.estado();
+        aprendiz1.matricula();
+
+        const instructor1 = new Instructor 
+
+        instructor1.setDocumento='1069642846'
+        instructor1.setNombreCompleto='guillermo andres avila '
+        instructor1.setProfecion='Ingeniero de sistemas'
+        instructor1.setSalarioBase=2600000
+
+        instructor1.informacion();
+        instructor1.contrato();
+    </script>
+</body>
+
+</html>
